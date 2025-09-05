@@ -126,7 +126,28 @@ async function verifyTables() {
 verifyTables();
 
 const app = express();
-app.use(cors());
+
+// Configure strict CORS
+const allowedOrigins = [
+  process.env.FRONTEND_URL || "http://localhost:3386",
+  "http://cryptorssview.ai-server.org"
+];
+app.use(cors({
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like from curl or mobile apps)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      console.warn(`[CORS] ❌ Blocked origin: ${origin}`);
+      return callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
+
 app.use(express.json());
 
 // Fetch news with pagination, filtering, and sorting
