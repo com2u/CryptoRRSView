@@ -5,7 +5,7 @@ import App from './App.tsx'
 
 // Frontend debugging logs
 console.log("[Frontend] 🚀 App starting...");
-console.log(`[Frontend] Backend API expected at: http://localhost:${import.meta.env.VITE_BACKEND_PORT || '3387'}`);
+console.log(`[Frontend] Backend API expected at: ${import.meta.env.VITE_BACKEND_URL}`);
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

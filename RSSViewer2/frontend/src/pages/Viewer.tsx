@@ -40,7 +40,7 @@ function Viewer() {
   }, [selectedSources, order]);
 
   const fetchSources = async () => {
-    const apiUrl = import.meta.env.VITE_BACKEND_URL || `http://localhost:${import.meta.env.VITE_BACKEND_PORT || "3387"}`;
+    const apiUrl = import.meta.env.VITE_BACKEND_URL;
     console.log("[Frontend] Fetching sources from", apiUrl + "/api/sources");
     try {
       const res = await fetch(apiUrl + "/api/sources");
@@ -67,7 +67,7 @@ function Viewer() {
     if (selectedSources.length > 0) {
       params.append("sources", selectedSources.join(","));
     }
-    const apiUrl = import.meta.env.VITE_BACKEND_URL || `http://localhost:${import.meta.env.VITE_BACKEND_PORT || "3387"}`;
+    const apiUrl = import.meta.env.VITE_BACKEND_URL;
     console.log("[Frontend] Fetching news from", apiUrl + "/api/news?" + params.toString());
     try {
       const res = await fetch(`${apiUrl}/api/news?${params}`);

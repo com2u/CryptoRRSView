@@ -21,7 +21,7 @@ function Graph() {
   const [security, setSecurity] = useState<string>("BTC");
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL || "http://localhost:4000"}/api/securities/${security}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/securities/${security}`)
       .then(res => res.json())
 // Ensure response is valid array
       .then(d => {

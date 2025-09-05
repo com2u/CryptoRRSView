@@ -38,7 +38,7 @@ function Analyze() {
   const [showSourceModal, setShowSourceModal] = useState<boolean>(false);
   const [showSecurityModal, setShowSecurityModal] = useState<boolean>(false);
 
-  const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   useEffect(() => {
     fetch(`${backendUrl}/api/sentiment/sources`)
