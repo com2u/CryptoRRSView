@@ -1,0 +1,22 @@
+# File: docker-compose.yml
+# Purpose: Orchestrate PostgreSQL, backend, and frontend services
+
+version: "3.9"
+services:
+  backend:
+    build: ./backend
+    container_name: rss_backend
+    env_file:
+      - .env
+    ports:
+      - "${BACKEND_PORT}:${BACKEND_PORT}"
+
+  frontend:
+    build: ./frontend
+    container_name: rss_frontend
+    ports:
+      - "${FRONTEND_PORT}:80"
+    depends_on:
+      - backend
+
+# No extra volumes needed (DB is external)
