@@ -129,9 +129,8 @@ const app = express();
 
 // Configure strict CORS
 const allowedOrigins = [
-  process.env.FRONTEND_URL || "http://localhost:3386",
-  "http://cryptorssview.ai-server.org",
-  "http://cryptoapi.ai-server.org"
+  process.env.FRONTEND_URL || "http://localhost:5173",
+  "http://cryptorssview.ai-server.org"
 ];
 app.use(cors({
   origin: function (origin, callback) {
